@@ -5,14 +5,14 @@ import React from "react";
 export const App = ()=>{
     return (
         <>
-            <ComponenteClase>
+            <ComponenteClase prop1={'propiedad seteada'}>
                 <p>HOLIS</p>
                 <p>totis</p>
             </ComponenteClase>
             <hr></hr>
             <CompoFunc nombre={'pirulin'}>
-                <p>SSHOLIS</p>
-                <p>SStotis</p>
+                <h6>children uno</h6>
+                <h6>children dos</h6>
             </CompoFunc>
         </>
     )

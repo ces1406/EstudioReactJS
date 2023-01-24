@@ -15,12 +15,21 @@ class ComponenteClase
     render(){
         return(
             <>
-                <h1>Nombre: {this.state.nombre}</h1>
-                <p>count:{this.props.children.count}</p>
-                <h2>Apellido: {this.state.apellido}</h2>
+                <hr/>
+                <h1>COMPONENTE CLASE</h1>
+                <h5>this.state.nombre: {this.state.nombre}</h5>
+                <h5>this.state.apellido: {this.state.apellido}</h5>
+                <h5>this.props.children.count:{this.props.children.count}</h5>
+                <h5>this.props.prop1:{this.props.prop1}</h5>
+                <h5>this.props.prop2:{this.props.prop2}</h5>
+                <hr/>
             </>
         )
     }
 } 
+ComponenteClase.defaultProps ={
+    prop1:'prop1 x default',
+    prop2:'prop2 x default'
+}
 
 export {ComponenteClase}
