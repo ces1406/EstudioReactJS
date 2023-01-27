@@ -1,5 +1,5 @@
 import { ComponenteClase } from "./compo-clase";
-import { CompoFunc } from "./compo-fun";
+import { CompoFuncA, CompoFuncB } from "./compo-fun";
 import React from "react";
 
 export const App = ()=>{
@@ -10,10 +10,15 @@ export const App = ()=>{
                 <p>totis</p>
             </ComponenteClase>
             <hr></hr>
-            <CompoFunc nombre={'pirulin'}>
+            <CompoFuncA nombre={'-componente funcional A-'}>
                 <h6>children uno</h6>
                 <h6>children dos</h6>
-            </CompoFunc>
+            </CompoFuncA>
+            <hr></hr>
+            <CompoFuncB nombre={'-componente funcional B-'}>
+                <h6>children uno</h6>
+                <h6>children dos</h6>
+            </CompoFuncB>
         </>
     )
 }

@@ -1,10 +1,10 @@
 import React from "react";
 
-const CompoFunc = (props)=>{
+const CompoFuncA = (props)=>{
     return(
         <>
             <hr/>
-            <h1>COMPONENTE FUNCIONAL</h1>
+            <h1>COMPONENTE FUNCIONAL A</h1>
             <h5>PROP: {props.nombre}</h5>
             <h5>props.children:</h5>
             {props.children}
@@ -13,4 +13,17 @@ const CompoFunc = (props)=>{
     )
 }
 
-export {CompoFunc}
+function CompoFuncB (props){
+    return(
+        <>
+            <hr/>
+            <h1>COMPONENTE FUNCIONAL B</h1>
+            <h5>PROP: {props.nombre}</h5>
+            <h5>props.children:</h5>
+            {props.children}
+            <hr/>
+        </>
+    )
+}
+
+export {CompoFuncA, CompoFuncB}
