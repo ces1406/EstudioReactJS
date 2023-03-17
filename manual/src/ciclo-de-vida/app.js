@@ -1,5 +1,5 @@
 import React from "react";
-
+ 
 class Reloj extends React.Component{
     constructor(props){
         console.log('->Reloj->constructor() ');
@@ -8,11 +8,12 @@ class Reloj extends React.Component{
     }
     componentDidMount(){
         console.log('->Reloj->componentDidMount() ');
-        this.timerId = setInterval(this.tick,20000)
+        this.timerId = setInterval(this.tick,30000)
     }
     tick = ()=>{ 
         const hora = new Date()
-        this.setState((est,props)=>{return{hora:hora.getHours(),minutos:hora.getMinutes(),segundos:hora.getSeconds()}})
+        this.setState((est,props)=>{return{hora:hora.getHours(),minutos:hora.getMinutes(),segundos:hora.getSeconds()}});
+        console.log('->Reloj->tick(): state=',JSON.stringify(this.state))
     }
     componentWillUnmount(){
         console.log('->Reloj->componentWillUnmount() ');
@@ -24,7 +25,7 @@ class Reloj extends React.Component{
         return(
             <>
                 <h1>RELOJ</h1>
-                <Hour hora={3}></Hour>
+                <Hor hora={this.state.hora}></Hor>
                 <Min minuto={this.state.minutos}></Min>
                 <Seg segundo={this.state.segundos}></Seg>
                 <br/>
@@ -34,7 +35,7 @@ class Reloj extends React.Component{
     }
 }
 
-class Hour extends React.Component{
+class Hor extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -52,11 +53,13 @@ class Hour extends React.Component{
     }
 }
 
+// Clase Min ejemplo de practicas equivocadas
 class Min extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            minuto: props.minuto
+            minuto: props.minuto // de esta manera nunca se va a reflejar en el estado "minuto" un cambio
+                                 // en el estado de reloj ( porque acá no hay un setState() ? )
         }
     }
     render(){
@@ -76,21 +79,32 @@ class Seg extends React.Component{
             segundos: props.segundo
         }
     }
+    componentDidMount(){
+        console.log('->Seg->componentDidMount()-this.state: '+JSON.stringify(this.state));
+    }
     componentDidUpdate(prevProps,prevState,snapshot){
-        console.log('->Seg->componentDidUpdate() '+JSON.stringify(prevProps));
-        console.log('->Seg->componentDidUpdate() '+JSON.stringify(prevState));
-        console.log('->Seg->componentDidUpdate() '+JSON.stringify(snapshot));
-        //this.setState({segundo:this.props.segundo})
-        //return {segundos:prevProps.segundo}
+        console.log('->Seg->componentDidUpdate()-prevProps: '+JSON.stringify(prevProps));
+        console.log('->Seg->componentDidUpdate()-prevState: '+JSON.stringify(prevState));
+        console.log('->Seg->componentDidUpdate()-this.props: '+JSON.stringify(this.props));
+        console.log('->Seg->componentDidUpdate()-this.state: '+JSON.stringify(this.state));
+        console.log('->Seg->componentDidUpdate()-snapshot: '+JSON.stringify(snapshot));
     }
    
     static getDerivedStateFromProps(props,state){        
-        console.log('->Seg->getDerived()-props '+JSON.stringify(props));
-        console.log('->Seg->getDerived()-state '+JSON.stringify(state));
+        console.log('->Seg->getDerivedStateFromProps()-props '+JSON.stringify(props));
+        console.log('->Seg->getDerivedStateFromProps()-state '+JSON.stringify(state));
+        // El metodo debe retornar un objeto que actualiza el estado o NULL
         return {segundos:props.segundo}
     }
+    shouldComponentUpdate(nextProps,nextState){
+        // El metodo debe retornar true (por defecto, se renderiza el cambio o lo que sea que gatillo
+        // el cambio) o false(se ignora el cambio y no se renderiza)
+        console.log('->Seg->shouldComponentUpdate()-nextState '+JSON.stringify(nextState));
+        console.log('->Seg->shouldComponentUpdate()-nextProps '+JSON.stringify(nextProps));
+        return true;
+    }
     render(){
-        //console.log('->Seg->render() '+this.state.segundo);
+        console.log('->Seg->render() '+this.state.segundos);
         return(
             <>
                 <h3>SEGUNDO: {this.state.segundos}</h3>
