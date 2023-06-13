@@ -26,7 +26,8 @@ class ComponenteHijo extends React.Component{
         return(
             <>
                 <h4>COMPONENTE HIJO</h4>
-                <p>La propiedad del componente hijo refleja un state del padre, entonces a medida que el componente padre modifique su estado esto será propagado a la propiedad del componente hijo.</p>
+                <p>La propiedad del componente hijo refleja un state del padre, entonces a medida que el componente padre modifique su estado esto será propagado 
+                   a la propiedad del componente hijo.</p>
                 <h6>this.props.propHeredada: {this.props.propHeredada}</h6>
             </>
         )
