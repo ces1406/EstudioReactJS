@@ -1,5 +1,5 @@
 import { ComponenteClase } from "./compo-clase";
-import { CompoFuncA, CompoFuncB } from "./compo-fun";
+import { CompoFuncA, CompoFuncB, CompoFuncC } from "./compo-fun";
 import React from "react";
 
 export const App = ()=>{
@@ -19,6 +19,10 @@ export const App = ()=>{
                 <h6>children uno</h6>
                 <h6>children dos</h6>
             </CompoFuncB>
+            <CompoFuncC nombre={'-componente funcional C-'}>
+                <h6>children uno</h6>
+                <h6>children dos</h6>
+            </CompoFuncC>
         </>
     )
 }

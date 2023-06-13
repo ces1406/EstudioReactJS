@@ -26,4 +26,17 @@ function CompoFuncB (props){
     )
 }
 
-export {CompoFuncA, CompoFuncB}
+const CompoFuncC = (props)=>{
+    return(
+        <>
+            <hr/>
+            <h1>COMPONENTE FUNCIONAL C</h1>
+            <h5>PROP: {props.nombre}</h5>
+            <h5>props.children:</h5>
+            {props.children}
+            <hr/>
+        </>
+    )
+}
+
+export {CompoFuncA, CompoFuncB, CompoFuncC}
